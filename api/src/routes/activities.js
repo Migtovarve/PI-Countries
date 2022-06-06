@@ -1,8 +1,22 @@
 const { Router } = require("express");
 const {Activity, Country} = require("../db")
-const {Op} = require("sequelize")
+//onst {Op} = require("sequelize")
 const router = Router();
 
+
+router.get("/", async (req,res,next)=>{
+    try {
+        const allActivities = await Activity.findAll();
+        if(!allActivities[0]){
+            res.status(404).send({message: "No hay ninguna Actividad creada."})
+        } else {
+            res.status(200).send(allActivities)
+        }   
+    } catch (error) {
+        next(error)
+    }
+
+})
 
 router.post('/', async (req, res, next) => {
     const { name, dificulty, duration, season, idCountry} = req.body

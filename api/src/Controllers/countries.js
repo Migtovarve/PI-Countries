@@ -24,7 +24,15 @@ async function getAllCountries(req, res, next) {
                 }    
             })
         })
-        const allCountries = await Country.findAll();
+        const allCountries = await Country.findAll(
+            {
+            include: {
+                model: Activity,
+                attributes: ['id','name','difficulty','duration','season'],
+                through: { attributes: [] }
+            }
+            }
+        );
         if (name){
             const oneCountry = await Country.findAll({
                   where:  {

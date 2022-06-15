@@ -5,25 +5,25 @@ const { Op } = require("sequelize");
 async function getAllCountries(req, res, next) {
     const {name} = req.query
     try {
-        // const countries = (await axios.get('https://restcountries.com/v3/all')).data
-        // countries.map(el=>{
-        //     let cap, pop
-        //     el.capital ? cap = el.capital : cap = ["No existe"]
-        //     el.subregion ? pop = el.subregion: pop = 'null'
-        //     Country.findOrCreate({
-        //         where: {
-        //             id: el.cca3,
-        //             name: el.name.common.toLowerCase() ,
-        //             flags: el.flags[1],
-        //             continents: el.continents[0],
-        //             capital: cap[0],
-        //             continents: el.continents[0],
-        //             subregion: pop,
-        //             area: el.area,
-        //             population: el.population
-        //         }    
-        //     })
-        // })
+        const countries = (await axios.get('https://restcountries.com/v3/all')).data
+        countries.map(el=>{
+            let cap, pop
+            el.capital ? cap = el.capital : cap = ["No existe"]
+            el.subregion ? pop = el.subregion: pop = 'null'
+            Country.findOrCreate({
+                where: {
+                    id: el.cca3,
+                    name: el.name.common.toLowerCase() ,
+                    flags: el.flags[1],
+                    continents: el.continents[0],
+                    capital: cap[0],
+                    continents: el.continents[0],
+                    subregion: pop,
+                    area: el.area,
+                    population: el.population
+                }    
+            })
+        })
         const allCountries = await Country.findAll(
             {
             include: {

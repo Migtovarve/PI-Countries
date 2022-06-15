@@ -125,7 +125,7 @@ export default function ActivityCreate() {
         e.preventDefault();
         dispatch(postActivity({
             name: state.name.toLowerCase(),
-            dificulty:state.difficulty, 
+            difficulty:state.difficulty, 
             duration: state.duration, 
             season: state.season, 
             idCountry:state.idAddCountries

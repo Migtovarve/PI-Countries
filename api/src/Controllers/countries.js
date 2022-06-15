@@ -5,25 +5,25 @@ const { Op } = require("sequelize");
 async function getAllCountries(req, res, next) {
     const {name} = req.query
     try {
-        const countries = (await axios.get('https://restcountries.com/v3/all')).data
-        countries.map(el=>{
-            let cap, pop
-            el.capital ? cap = el.capital : cap = ["No existe"]
-            el.subregion ? pop = el.subregion: pop = 'null'
-            Country.findOrCreate({
-                where: {
-                    id: el.cca3,
-                    name: el.name.common.toLowerCase() ,
-                    flags: el.flags[1],
-                    continents: el.continents[0],
-                    capital: cap[0],
-                    continents: el.continents[0],
-                    subregion: pop,
-                    area: el.area,
-                    population: el.population
-                }    
-            })
-        })
+        // const countries = (await axios.get('https://restcountries.com/v3/all')).data
+        // countries.map(el=>{
+        //     let cap, pop
+        //     el.capital ? cap = el.capital : cap = ["No existe"]
+        //     el.subregion ? pop = el.subregion: pop = 'null'
+        //     Country.findOrCreate({
+        //         where: {
+        //             id: el.cca3,
+        //             name: el.name.common.toLowerCase() ,
+        //             flags: el.flags[1],
+        //             continents: el.continents[0],
+        //             capital: cap[0],
+        //             continents: el.continents[0],
+        //             subregion: pop,
+        //             area: el.area,
+        //             population: el.population
+        //         }    
+        //     })
+        // })
         const allCountries = await Country.findAll(
             {
             include: {
@@ -45,7 +45,7 @@ async function getAllCountries(req, res, next) {
             if(oneCountry[0]){//Existe algun pais?
                 res.status(200).send(oneCountry)
             }else{
-                res.status(404).send({massage: "No se encuetra ningun pais correspondiente a su busquedad"})
+                res.status(404).send({message: "There is no country corresponding to your search"})
             }
 
         } else {
@@ -71,7 +71,7 @@ async function getInfoCountry(req,res,next){
         })
         //console.log(infoCountry)
         if(!infoCountry[0]) {
-            res.status(404).send({massage: `No existe un Pais con el Codigo ${idCountry}.`})
+            res.status(404).send({message: `There is no Country with the Code ${idCountry}.`})
         } else {
             res.status(200).send(infoCountry)
         }

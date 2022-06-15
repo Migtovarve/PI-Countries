@@ -8,19 +8,18 @@ router.get("/", async (req,res,next)=>{
     try {
         const allActivities = await Activity.findAll();
         if(!allActivities[0]){
-            res.status(404).send({message: "No hay ninguna Actividad creada."})
+            res.status(404).send({message: "There is no Activity created.."})
         } else {
             res.status(200).send(allActivities)
         }   
     } catch (error) {
         next(error)
     }
-
 })
 
 router.post('/', async (req, res, next) => {
     const { name, dificulty, duration, season, idCountry} = req.body
-    if(!name || !dificulty || !duration || !season || !idCountry) return res.status(400).send({massage: "hacen falta datos obligatorios"})
+    if(!name || !dificulty || !duration || !season || !idCountry) return res.status(400).send({message: "hacen falta datos obligatorios"})
 
     try {
         const validatorActivity = await Activity.findAll({
@@ -29,19 +28,20 @@ router.post('/', async (req, res, next) => {
             }
         })
         // console.log(validatorActivity[0], "********************************************************************************")
+        //console.log(validatorActivity)
         if(validatorActivity[0]) {//la actividad ya existe? 
-            res.status(400).send({massage: "Ya existe una actividad con ese nombre"})
+            res.status(400).send({message: "There is an activity with that name"})
         } else {
             const activityCreated = await Activity.create({
                     name, dificulty, duration, season
             })
 
             const arrPromise = idCountry.map( async elem => {
-                const country = await Country.findByPk(elem)
+            const country = await Country.findByPk(elem)
                 activityCreated.addCountry(country)
             })
             await Promise.all(arrPromise)
-            res.status(201).send("actividad creada correctamente")
+            res.status(201).send({message:"Activity created successfully"})
         }
         // const country = await Country.findByPk(idCountry)
         // const activity = await country.createActivity({

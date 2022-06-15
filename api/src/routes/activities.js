@@ -18,8 +18,8 @@ router.get("/", async (req,res,next)=>{
 })
 
 router.post('/', async (req, res, next) => {
-    const { name, dificulty, duration, season, idCountry} = req.body
-    if(!name || !dificulty || !duration || !season || !idCountry) return res.status(400).send({message: "hacen falta datos obligatorios"})
+    const { name, difficulty, duration, season, idCountry} = req.body
+    if(!name || !difficulty || !duration || !season || !idCountry) return res.status(400).send({message: "hacen falta datos obligatorios"})
 
     try {
         const validatorActivity = await Activity.findAll({
@@ -33,7 +33,7 @@ router.post('/', async (req, res, next) => {
             res.status(400).send({message: "There is an activity with that name"})
         } else {
             const activityCreated = await Activity.create({
-                    name, dificulty, duration, season
+                    name, difficulty, duration, season
             })
 
             const arrPromise = idCountry.map( async elem => {
@@ -45,7 +45,7 @@ router.post('/', async (req, res, next) => {
         }
         // const country = await Country.findByPk(idCountry)
         // const activity = await country.createActivity({
-        //     name, dificulty, duration, season
+        //     name, difficulty, duration, season
         // })
         // res.send("Se creo correctamente")
     } catch (error) {

@@ -1,0 +1,48 @@
+.load {
+    height: 600px;
+    width: 800px;
+    background-image: url(https://designlooter.com/images/hourglass-svg-2.gif);
+    background-repeat: no-repeat;
+}
+/*
+#31B189
+ #7ACE67
+  #FFC872
+   #FFE3B3
+
+*/
+
+.title {
+    margin: 0px;
+}
+.content{
+    height:100vh;
+    width: 100vw;
+    background-color: #22b573;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bg {
+    /* background-image: url(https://www.teahub.io/photos/full/60-608358_background-travel.jpg); */
+    /* background-size: cover; */
+    height: auto;
+    width: 100vw;
+    background-size: cover;
+}
+
+body{
+    background-color: #FFE3B3;
+}
+
+h1{
+    color: #31B189
+}
+
+h2 {
+    color: #31B189
+}
+
+h3{
+    color: rgb(129, 129, 129)
+}

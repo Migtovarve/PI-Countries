@@ -6,7 +6,7 @@ import Cards from "../Cards/Cards";
 //import { Link } from "react-router-dom";
 import Nav from "../Nav/Nav"
 import Pagination from "../Pagination/Pagination";
-
+import style from "./Home.module.css"
 
 export default function Home() {
     const {countries} = useSelector((state)=>{return state})
@@ -36,12 +36,19 @@ export default function Home() {
     //         e.preventDefault()
     //         dispatch(getAllCountries())
     //     }
-        
+    //https://www.robotlab.com/hs-fs/hubfs/Moon.gif?width=1920&name=Moon.gif
+    //https://kroff.com/wp-content/uploads/2020/10/Kroff_Website_World-MapAnimation_01zb.gif
     return (
-        <div>
+        !countries[0]? <div className={style.content}> <div className={style.load}> </div></div>
+         :
+        <div className={style.bg}>
             <Nav paginado={paginado}/>
-            <Pagination countriesPerPage={countriesPerPage} countries={countries.length} paginado={paginado}/>
+            <h1 className={style.title}>Countries</h1>
+            {countries[0]==="search"?<h3>Loading...</h3>:<>
             <Cards currentCountries={currentCountries}/>
+            <Pagination currentPage={currentPage} countriesPerPage={countriesPerPage} countries={countries.length} paginado={paginado}/>
+            </>
+            }
         </div>
     )
 }

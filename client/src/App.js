@@ -4,6 +4,10 @@ import LandingPage from './components/LandingPage/LandingPage';
 import Home from "./components/Home/Home"
 import Details from './components/Details/Details';
 import ActivityCreate from './components/ActivityCreate/ActivityCreate';
+
+
+
+
 function App() {
   return (
     <BrowserRouter>

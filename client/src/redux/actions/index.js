@@ -9,9 +9,13 @@ export const FILTER_BY_CONTINENT = "FILTER_BY_CONTINENT"
 export const FILTER_BY_ACTIVITY = "FILTER_BY_ACTIVITY"
 export const ORDER_AZ = "ORDER_AZ"
 export const ORDER_ZA = "ORDER_ZA"
-export const ORDER_LOWER = "ORDER_LOWER"
+export const ORDER_POPULATION = "ORDER_POPULATION"
 export const ORDER_HIGHEST = "ORDER_HIGHEST"
 export const FILTER_ON = "FILTER_ON"
+export const POST_ACTIVITY = "POST_ACTIVITY"
+export const REFRESH = "REFRESH"
+export const SET_COUNTRIES= "SET_COUNTRIES"
+export const RESET_WARNING = "RESET_WARNING"
 // export default function getAllCountries() {
 //     return (dispatch)=>{
 //         return axios.get("http://localhost:3001/countries")
@@ -34,10 +38,24 @@ export function resetCoutry(){
         type: RESET_COUNTRY
     }
 }
+export function refresh(){
+    return {
+        type: REFRESH
+    }
+}
+
+export function setCountries(payload){
+    return {
+        type: SET_COUNTRIES,
+        payload
+    }
+}
+
+
 export function getAllCountries(){
     return (async (dispatch)=>{
         try {
-            const countries = await axios.get("http://localhost:3001/countries")
+            const countries = await axios.get("/countries")
             return dispatch({
                 
                 type: GET_ALL_COUNTRIES,
@@ -49,25 +67,59 @@ export function getAllCountries(){
         }
     })
 }
+// export function getInfoCountry(id){
+//     return (async (dispatch)=>{
+//         try {
+//             const country = await axios.get(`http://localhost:3001/countries/${id}`)
+//             return dispatch({
+//                 type: GET_INFO_COUNTRY,
+//                 payload: country.data
+//             })
+//         } catch (error) {
+//             console.log(error)
+//         }
+//     })
+// }
+
 export function getInfoCountry(id){
-    return (async (dispatch)=>{
-        try {
-            const country = await axios.get(`http://localhost:3001/countries/${id}`)
-            return dispatch({
-                type: GET_INFO_COUNTRY,
-                payload: country.data
-            })
-        } catch (error) {
-            console.log(error)
-        }
-    })
+    return  (dispatch)=>{
+
+        return axios.get(`/countries/${id}`)
+            .then(
+                res =>{
+                    console.log(res.data)
+                    return dispatch({
+                        type: GET_INFO_COUNTRY,
+                        payload: res.data
+                    })
+                }
+            ).catch(err=>err)
+            //     dispatch({
+            //         type: GET_INFO_COUNTRY,
+            //         payload: country.data
+            //     }
+            // )       
 }
+}
+// export default function getAllCountries() {
+//     return (dispatch)=>{
+//         return axios.get("http://localhost:3001/countries")
+//         .then(data => {
+//            return dispatch({
+//                 type: GET_ALL_COUNTRIES,
+//                 payload: data
+//             })
+//         }).catch(err=> err)
+//     }
+// }
+
+
 
 export function getCountryName(name) {
 
     return  (async (dispatch) => {
         try {
-            const countries = await axios(`http://localhost:3001/countries?name=${name}`)
+            const countries = await axios(`/countries?name=${name}`)
             if(countries.data) {
                 return dispatch({
                     type: GET_COUNTRY_NAME,
@@ -75,8 +127,12 @@ export function getCountryName(name) {
                    });   
             }
         } catch (error) {
-            console.log(error)
-            alert("error: el pais no existe")
+            //console.log(error.response.data.message)
+            return dispatch({
+                type: GET_COUNTRY_NAME,
+                payload: error.response.data.message
+               });   
+            //alert(error.response.data.message)
         }
     })
     
@@ -84,27 +140,38 @@ export function getCountryName(name) {
 
 export function getActivities() {
     return (async (dispatch)=>{
-
-        try {
-            const activities = await axios(`http://localhost:3001/activity`)
+        return axios.get(`/activity`)
+        .then(res=>{
             return dispatch({
                 type: GET_ACTIVITIES,
-                payload: activities.data
+                payload: res.data
             })
-        } catch (error) {
-            console.log(error)
-        }
+        }).catch(err=>err)
+        // try {
+        //     const activities = await axios(`http://localhost:3001/activity`)
+        //     return dispatch({
+        //         type: GET_ACTIVITIES,
+        //         payload: activities.data
+        //     })
+        // } catch (error) {
+        //     console.log(error)
+        // }
 
 
     })
 }
 
 export function postActivity(body) {
+    return async (dispatch) => {
+        try {
+            const res = (await axios.post("/activity", body)).data
+            //console.log(res)
+            return dispatch({ type: POST_ACTIVITY, payload: res.message});
+        } catch (error) {
+            //console.log(error);
+            return dispatch({ type: POST_ACTIVITY, payload: error.response.data.message});
+        }
 
-    try {
-        
-    } catch (error) {
-        
     }
 }
 
@@ -123,29 +190,31 @@ export function filterByContinent(payload){
     }
 } 
 
-export function orderAZ(){
+export function orderAZ(payload){
     return {
         type: ORDER_AZ,
+        payload
+    }
+}
+export function orderPopulation(payload){
+    return {
+        type: ORDER_POPULATION,
+        payload
     }
 }
 
-export function orderZA(){
+export function resetWarning(){
     return {
-        type: ORDER_ZA,
+        type: RESET_WARNING,
     }
 }
 
-export function orderLower(){
-    return {
-        type: ORDER_LOWER,
-    }
-}
 
-export function orderHighest(){
-    return {
-        type: ORDER_HIGHEST,
-    }
-}
+// export function orderHighest(){
+//     return {
+//         type: ORDER_HIGHEST,
+//     }
+// }
 
 // export function filterOn(payload){
 //     return {

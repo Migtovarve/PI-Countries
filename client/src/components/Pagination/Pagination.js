@@ -1,6 +1,6 @@
 import React from "react";
-
-export default function Pagination({countriesPerPage, countries, paginado}){
+import style from "./Pagination.module.css"
+export default function Pagination({countriesPerPage, countries, paginado, currentPage}){
 
     const pageNumbers= []
     let aux;
@@ -16,14 +16,24 @@ export default function Pagination({countriesPerPage, countries, paginado}){
         pageNumbers.push(i+1)
     }
 
+    function handleClick(e){
+        //console.log(e.target.getAttribute('name'))
+        const name = Number(e.target.getAttribute('name'))
+        let currentP = name + 1 
+        paginado(currentP)
+        console.log(e.target)
+    }
+
+
+
     return (
         <nav>
-            <ul >
+            <ul className={style.pagination} >
                 {
-                    pageNumbers.map(number=>{
+                    pageNumbers.map((number,index)=>{
                         return (
                             <li key={number}>
-                                <button onClick={()=>paginado(number)}>{number}</button>
+                                <a className={style.aPagination} key={index} name={index}  onClick={(e)=>handleClick(e)}>{number}</a>
                             </li>
                         )
                     })

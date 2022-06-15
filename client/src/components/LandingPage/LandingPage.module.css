@@ -1,0 +1,80 @@
+.bg {
+    width: 100vw;
+    height: 100vh;
+    background-image: url("https://sb.ecobnb.net/app/uploads/sites/3/2016/02/green-world.jpg");
+    background-size: cover;
+    display: flex;
+} 
+.content {
+    width: 50vw;
+    height: 60vh;
+    background-color: rgba(255, 255, 255, 0.3) ;
+    margin: auto;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+}
+
+
+.btn {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19)
+}
+
+.title {
+    font-size: 5vw
+}
+
+.content button {
+    margin-top: 10px;
+    box-sizing: border-box;
+    width:100px;
+    height: 40px;
+    font-size: 14px;
+    border: none;
+    border-radius: 32px;
+    background: #9194936e;
+    box-shadow: 2px 3px 4px;
+}
+
+.content h2 {
+    color: rgb(0, 0, 0);
+}
+
+header button {
+        box-sizing: border-box;
+        width:100px;
+        height: 40px;
+        font-size: 14px;
+        border: none;
+        border-radius: 32px;
+        background: #9194936e;
+        box-shadow: 2px 3px 4px;
+        margin-left: 10px;
+}
+
+header select {
+
+    box-sizing: border-box;
+    width:100px;
+    height: 40px;
+    font-size: 14px;
+    border: none;
+    border-radius: 32px;
+    background: #9194936e;
+    box-shadow: 2px 3px 4px;
+    margin-left: 10px;
+}
+header input {
+    padding-left: 20px;
+    box-sizing: border-box;
+
+    width:280px;
+    height: 40px;
+    font-size: 14px;
+    border: none;
+    border-radius: 32px;
+    background: #ffffff6e;
+    box-shadow: 2px 3px 4px;
+}

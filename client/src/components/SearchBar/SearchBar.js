@@ -1,29 +1,33 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { getCountryName } from "../../redux/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { getCountryName, setCountries } from "../../redux/actions";
+import style from "./SearchBar.module.css"
+export default function SearchBar({setAZZA, setPopulation, setSelectedContinet,setSelectedActivity, paginado}) {
 
-export default function SearchBar({setAZZA, setPopulation, setSelectedContinet,setSelectedActivity}) {
-    const [Name,setName]=useState("")
+    const {countries} = useSelector(state=>state)
+    const [name,setName]=useState("")
     const dispatch = useDispatch()
 
     function handleSearch(e){
-        dispatch(getCountryName(Name))
+        dispatch(setCountries(["search"]))
+        dispatch(getCountryName(name))
         setName("")
-        setAZZA("A to Z")
-        setPopulation("Lower")
+        setAZZA(true)
+        setPopulation(true)
         setSelectedContinet(true)
         setSelectedActivity(true)
+        paginado(1)
     }
 
     function handleInputOnChange(e){
         e.preventDefault()
         setName(e.target.value)
-        console.log(Name)
+        //console.log(Name)
     }
     return (
-        <div>
-            <input onChange={e=> handleInputOnChange(e)} value={Name} type={"text"} placeholder={"Buscar país..."}/>
-            <button onClick={e=>handleSearch(e)} >Search</button>
+        <div className={style.content}>
+            <input className={style.search} onChange={e=> handleInputOnChange(e)} value={name} type={"text"} placeholder={"Search country..."}/>
+            <button className={style.search} onClick={e=>handleSearch(e)}>Search</button>
         </div>
     )
 }

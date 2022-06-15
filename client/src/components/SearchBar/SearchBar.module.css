@@ -1,0 +1,13 @@
+
+.content{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 40px;
+    align-items: center;
+}
+
+.search {
+    box-sizing: border-box;
+    height: 40px;
+}

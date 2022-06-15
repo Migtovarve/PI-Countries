@@ -1,0 +1,156 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    height: 75vh;
+}
+.content h2{
+    color:  white;
+    margin: 10px auto;
+}
+
+.form div input{
+    width: 300px;
+    height: 20px;
+}
+.form div select {
+    width: 308px;
+    height: 26px;
+}
+.form div p {
+    color: rgb(255, 0, 0);
+    font-size: 12px;
+}
+
+.form  .addCountries {
+    height: 25vh;
+    background: #FFC872;
+    width: 396.27px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    border-radius: 32px;
+    overflow: auto;
+}
+
+.addCountries ul {
+    margin: 2px 4px;
+    padding-left: 0px;
+    width: 92%;
+    height: 80%;
+    font-size: 12px;
+}
+.addCountries ul button {
+    margin: 0;
+    padding: 0;
+    font-size: 8px ;
+}
+
+.addCountries ul li {
+    margin: 4px;
+}
+
+
+.form div ul li button{
+    box-sizing: border-box;
+    font-size: 8px;
+    width: 10px;
+    height:10px;
+    border: none;
+    border-radius: 50%;
+    background: #fc0000ab;
+    box-shadow: none;
+    margin:0 auto;
+    padding: 0;
+}
+
+.form div .deleteAll {
+    width: 65px;
+    font-size: 12px;
+    height: 16px;
+    border-radius: 32px;
+    box-shadow: none;
+    background-color: #fc0000ab ;
+}
+
+
+.form div{
+    height: 70px;
+}
+
+.form .submit {
+    box-sizing: border-box;
+    width:100px;
+    height: 40px;
+    font-size: 18px;
+    border: none;
+    border-radius: 32px;
+    background: #9194936e;
+    box-shadow: 2px 3px 4px;
+    align-self: center;
+    margin: 10px auto;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    width: 50vw;
+    margin: 5vh auto;
+    background: #31b1886e;
+    border-radius: 32px;
+    justify-content: center;
+    height: 90vh;
+}
+
+.content button {
+    box-sizing: border-box;
+    width:100px;
+    height: 40px;
+    font-size: 18px;
+    border: none;
+    border-radius: 32px;
+    background: #9194936e;
+    box-shadow: 2px 3px 4px;
+}
+
+
+.divContenedor {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.400);
+    top: 0;
+    left:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.divAviso {
+    width: 520px;
+    height: 420px;
+    border-radius: 32px;
+    background: #ffffff;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.divAviso button {
+    box-sizing: border-box;
+    width:100px;
+    height: 40px;
+    font-size: 24px;
+    border: none;
+    border-radius: 32px;
+    background: #31b1886e;
+    box-shadow: 2px 5px 3px;
+}

@@ -5,6 +5,9 @@
     justify-content: flex-start;
     height: 75vh;
 }
+
+
+
 .content h2{
     color:  white;
     margin: 10px auto;
@@ -99,13 +102,50 @@
     flex-direction: column;
     align-content: center;
     align-items: center;
-    width: 50vw;
+    width: 40vw;
     margin: 5vh auto;
     background: #31b1886e;
     border-radius: 32px;
     justify-content: center;
     height: 90vh;
 }
+
+@media (max-width: 1100px) {
+    .content {
+        width:440px
+    }
+}
+@media (max-height: 700px) {
+    .content {
+        height: 620px;
+    }
+    .form {
+        height: 510px;
+    }
+}
+@media (max-width: 450px) {
+    .content {
+        width:360px;
+        min-width: 300px;
+    }
+
+    .form {
+        width: 280px;
+    }
+    .form .addCountries {
+        width: 280px;
+    }
+
+    .form div input{
+        width: 183px;
+    }
+    .form div select {
+        width: 183px;
+    }
+
+}
+
+
 
 .content button {
     box-sizing: border-box;

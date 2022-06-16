@@ -39,7 +39,7 @@ export default function Home() {
     //https://www.robotlab.com/hs-fs/hubfs/Moon.gif?width=1920&name=Moon.gif
     //https://kroff.com/wp-content/uploads/2020/10/Kroff_Website_World-MapAnimation_01zb.gif
     return (
-        !countries[0]? <div className={style.content}> <div className={style.load}> </div></div>
+        !countries[0]? <div className={style.content}> <img className={style.load} src="https://designlooter.com/images/hourglass-svg-2.gif"/></div>
          :
         <div className={style.bg}>
             <Nav paginado={paginado}/>

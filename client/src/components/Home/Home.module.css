@@ -1,9 +1,10 @@
 .load {
-    height: 600px;
-    width: 800px;
-    background-image: url(https://designlooter.com/images/hourglass-svg-2.gif);
-    background-repeat: no-repeat;
+    min-width: 360px;
+    height: auto
+    /* background-image: url(https://designlooter.com/images/hourglass-svg-2.gif);
+    background-repeat: no-repeat; */
 }
+
 /*
 #31B189
  #7ACE67

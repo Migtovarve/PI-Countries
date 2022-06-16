@@ -9,6 +9,7 @@ export default function SearchBar({setAZZA, setPopulation, setSelectedContinet,s
     const dispatch = useDispatch()
 
     function handleSearch(e){
+        e.preventDefault()
         dispatch(setCountries(["search"]))
         dispatch(getCountryName(name))
         setName("")
@@ -25,9 +26,9 @@ export default function SearchBar({setAZZA, setPopulation, setSelectedContinet,s
         //console.log(Name)
     }
     return (
-        <div className={style.content}>
+        <form className={style.content}>
             <input className={style.search} onChange={e=> handleInputOnChange(e)} value={name} type={"text"} placeholder={"Search country..."}/>
             <button className={style.search} onClick={e=>handleSearch(e)}>Search</button>
-        </div>
+        </form>
     )
 }

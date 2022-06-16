@@ -57,7 +57,8 @@ export default function Nav({paginado}){
         setAZZA(true)
     }
 
-    function handleRefresh(){
+    function handleRefresh(e){
+        e.preventDefault()
         dispatch(refresh())
         setSelectedContinet(true)
         setSelectedActivity(true)
@@ -72,16 +73,15 @@ export default function Nav({paginado}){
 
 
             <div className={style.filter}>
-            
-            <button onClick={e=>handleRefresh(e)} className={style.btnNav}>Refresh</button>
+                <button onClick={e=>handleRefresh(e)} className={style.btnNav}>Refresh</button>
             </div>
-
-            <>
-                <SearchBar setAZZA={setAZZA} setPopulation={setPopulation} paginado={paginado} setSelectedContinet={setSelectedContinet} setSelectedActivity={setSelectedActivity} />
-            </>
             <>
                 <Link to="/activity"><button className={style.btnNav}>Create Activity</button></Link>
             </>
+            <>
+                <SearchBar setAZZA={setAZZA} setPopulation={setPopulation} paginado={paginado} setSelectedContinet={setSelectedContinet} setSelectedActivity={setSelectedActivity} />
+            </>
+
         </header>
         <div className={style.filters}>
             <select  className={style.btnNav} onChange={(e)=>handleFilterContinet(e)}  >

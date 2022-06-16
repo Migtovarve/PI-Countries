@@ -123,10 +123,10 @@
         height: 510px;
     }
 }
+
 @media (max-width: 450px) {
     .content {
         width:360px;
-        min-width: 300px;
     }
 
     .form {
@@ -144,7 +144,11 @@
     }
 
 }
-
+@media (max-width: 374px) {
+    .content {
+        width:300px;
+    }
+}
 
 
 .content button {

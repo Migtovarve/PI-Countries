@@ -1,11 +1,23 @@
 
 .content{
-    display: flex;
+    /* display: flex;
     align-items: center;
-    flex-direction: row;
+    flex-direction: row;*/
+    width: 280px;
+    position: relative;
+}
+.content button {
+    position: absolute;
+    right: 0px;
+    margin: 0;
+    cursor: pointer;
+    box-shadow: none;
+    width: 70px;
+    border-radius: 0 32px 32px 0px;
 }
 
 .search {
     box-sizing: border-box;
-    height: 40px;
+    height: 30px;
+    position: relative;
 }

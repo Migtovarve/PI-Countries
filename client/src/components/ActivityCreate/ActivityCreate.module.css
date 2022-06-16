@@ -16,10 +16,14 @@
 .form div input{
     width: 300px;
     height: 20px;
+    background-color: #fff;
+    border: 1px solid #000;
 }
 .form div select {
     width: 308px;
     height: 26px;
+    background-color: #fff;
+    border: 1px solid #000;
 }
 .form div p {
     color: rgb(255, 0, 0);

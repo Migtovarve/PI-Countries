@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import SearchBar from "../SearchBar/SearchBar"
 import {Link} from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux";
-import { filterByContinent,filterByActivity, orderAZ, orderHighest, orderPopulation, orderZA, reset, getActivities, refresh } from "../../redux/actions";
+import { filterByContinent,filterByActivity, orderAZ, /*orderHighest,*/ orderPopulation, /*orderZA,*/ reset, getActivities, refresh } from "../../redux/actions";
 import style from "./Nav.module.css"
 
 export default function Nav({paginado}){
@@ -15,7 +15,7 @@ export default function Nav({paginado}){
 
     useEffect(()=>{
        !activities[0] && dispatch(getActivities())
-    },[dispatch])
+    },[dispatch, activities])
 
     function handleFilterContinet(e){
         dispatch(filterByContinent(e.target.value))
@@ -59,6 +59,7 @@ export default function Nav({paginado}){
 
     function handleRefresh(e){
         e.preventDefault()
+        paginado(1)
         dispatch(refresh())
         setSelectedContinet(true)
         setSelectedActivity(true)
@@ -68,7 +69,7 @@ export default function Nav({paginado}){
     return (<>
         <header className={style.bg}>
             <div>
-                <Link to="/"><img className={style.logo}  src={"https://cdn.theorg.com/d3119e0e-8202-4034-85ce-d0356382515e_thumb.jpg"} onClick={(e)=>{handleReset()}}/></Link>
+                <Link to="/"><img className={style.logo} alt="logo-henry" src={"https://cdn.theorg.com/d3119e0e-8202-4034-85ce-d0356382515e_thumb.jpg"} onClick={(e)=>{handleReset()}}/></Link>
             </div>
 
 

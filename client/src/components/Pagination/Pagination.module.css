@@ -7,22 +7,20 @@
 
 .pagination li {display: inline;}
 
-.pagination li a {
-    color: rgb(218, 24, 24)75, 17, 17);
+.btnPagination {
     float: left;
     padding: 8px 16px;
     text-decoration: none;
     cursor: pointer;
+    border: 0px;
+    border-radius: none;
 }
 
-.pagination li a.active {
+ .aPagination {
     background-color: #4CAF50;
     color: white;
-}
-/* .active {
-    background-color: #4CAF50;
-    color: white;
-} */
-.pagination li a:hover:not(.active) {background-color: #ddd;}
+} 
+
+.pagination li button:hover:not(.active) {background-color: #ddd;}
 
 

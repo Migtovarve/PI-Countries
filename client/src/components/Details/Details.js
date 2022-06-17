@@ -47,12 +47,12 @@ export default function Details(){
                             <th>Duration</th>
                             <th>Season</th>
                         </tr>
-                        {country[0].activities.map(elem=>{
-                            return (<tr>
+                        {country[0].activities.map((elem,i)=>{
+                            return (<tr key={i}>
                                 <td>{elem.name}</td>
                                 <td>{elem.id}</td>
                                 <td>{elem.difficulty} </td>
-                                <td>{elem.duration}h</td>
+                                <td>{`${elem.duration}h`}</td>
                                 <td>{elem.season}</td>
                             </tr>)
                         })}

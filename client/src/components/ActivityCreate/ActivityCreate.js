@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 //import { Link } from "react-router-dom";
-import { getActivities, getAllCountries, postActivity, reset, resetCoutry, resetWarning } from "../../redux/actions";
+import { getActivities, getAllCountries, postActivity, reset, /*resetCoutry,*/ resetWarning } from "../../redux/actions";
 import style from "./ActivityCreate.module.css"
 
 export function validate(input){
@@ -42,9 +42,9 @@ export default function ActivityCreate() {
     const {copyCountries, activities, warning, message} = useSelector(state=>state)
 
     useEffect(()=>{
-        !copyCountries[0] && dispatch(getAllCountries())
+        !copyCountries[0]  && dispatch(getAllCountries())
         !activities[0] && dispatch(getActivities())
-    },[copyCountries, dispatch,])
+    },[copyCountries, dispatch,activities])
 
     const [state, setState] =useState({
         name:"",
@@ -163,14 +163,14 @@ export default function ActivityCreate() {
         setState({
             ...state,
             addCountries: state.addCountries.filter((country, index)=>{
-                return index != e.target.name
+                return index !== Number(e.target.name)
              }),
             idAddCountries: state.idAddCountries.filter((country, index)=>{
-                return index != e.target.name
+                return index !== Number(e.target.name)
              })
         })
 
-        console.log(e.target.name)
+        //console.log(e.target.name)
     }
     return (
     !copyCountries[0] && !activities[0]? <div>Cargando...</div>:

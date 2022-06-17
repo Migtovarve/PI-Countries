@@ -87,7 +87,7 @@ export function getInfoCountry(id){
         return axios.get(`/countries/${id}`)
             .then(
                 res =>{
-                    console.log(res.data)
+                    //console.log(res.data)
                     return dispatch({
                         type: GET_INFO_COUNTRY,
                         payload: res.data

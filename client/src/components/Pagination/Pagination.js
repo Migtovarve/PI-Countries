@@ -2,7 +2,7 @@ import React from "react";
 import style from "./Pagination.module.css"
 export default function Pagination({countriesPerPage, countries, paginado, currentPage}){
 
-    const pageNumbers= []
+    let pageNumbers= []
     let aux;
 
     if (countries - 9 > 0 ){
@@ -12,19 +12,21 @@ export default function Pagination({countriesPerPage, countries, paginado, curre
      }
      const pages = aux + Math.ceil((countries-9)/(10))
     //if(countriesPerPage===9) countriesPerPage = 10
+
     for (let i = 0; i < pages; i++) {
         pageNumbers.push(i+1)
     }
-
+    if(!pageNumbers[0]){
+        pageNumbers=[1]
+    }
     function handleClick(e){
         //console.log(e.target.getAttribute('name'))
         const name = Number(e.target.getAttribute('name'))
         let currentP = name + 1 
         paginado(currentP)
-        console.log(e.target)
     }
 
-
+    //console.log( document.getElementById() ); 
 
     return (
         <nav>
@@ -33,7 +35,7 @@ export default function Pagination({countriesPerPage, countries, paginado, curre
                     pageNumbers.map((number,index)=>{
                         return (
                             <li key={number}>
-                                <a className={style.aPagination} key={index} name={index}  onClick={(e)=>handleClick(e)}>{number}</a>
+                                <button className={style.btnPagination} key={index} name={index} id={index}  onClick={(e)=>handleClick(e)}>{number}</button>
                             </li>
                         )
                     })

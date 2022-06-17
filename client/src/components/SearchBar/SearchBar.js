@@ -1,15 +1,16 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, /*useSelector */} from "react-redux";
 import { getCountryName, setCountries } from "../../redux/actions";
 import style from "./SearchBar.module.css"
 export default function SearchBar({setAZZA, setPopulation, setSelectedContinet,setSelectedActivity, paginado}) {
 
-    const {countries} = useSelector(state=>state)
+    //const {countries} = useSelector(state=>state)
     const [name,setName]=useState("")
     const dispatch = useDispatch()
 
     function handleSearch(e){
         e.preventDefault()
+        paginado(1)
         dispatch(setCountries(["search"]))
         dispatch(getCountryName(name))
         setName("")
@@ -17,7 +18,6 @@ export default function SearchBar({setAZZA, setPopulation, setSelectedContinet,s
         setPopulation(true)
         setSelectedContinet(true)
         setSelectedActivity(true)
-        paginado(1)
     }
 
     function handleInputOnChange(e){
